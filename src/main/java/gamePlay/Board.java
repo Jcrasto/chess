@@ -1,3 +1,5 @@
+package gamePlay;
+
 public class Board {
     Square[][] squares;
 
