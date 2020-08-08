@@ -1,3 +1,7 @@
+package pieces;
+import gamePlay.Board;
+import gamePlay.Square;
+
 public abstract class Piece {
     private boolean captured = false;
     private boolean white = false;

@@ -1,3 +1,7 @@
+package gamePlay;
+
+import pieces.Piece;
+
 public class Square {
     private Piece piece;
     private int x;
