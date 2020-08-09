@@ -3,7 +3,7 @@ package pieces;
 import gamePlay.Board;
 import gamePlay.Square;
 
-public abstract class King extends Piece {
+public class King extends Piece {
     private boolean castled = false;
 
     public King(boolean white){
