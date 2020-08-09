@@ -1,4 +1,5 @@
 package pieces;
+
 import gamePlay.Board;
 import gamePlay.Square;
 

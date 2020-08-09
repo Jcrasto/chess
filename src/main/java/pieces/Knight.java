@@ -9,7 +9,7 @@ public class Knight extends Piece{
     }
     @Override
     public boolean canMove(Board board, Square start, Square end){
-        if (end.getPiece().isWhite()) == this.isWhite()){
+        if (end.getPiece().isWhite() == this.isWhite()){
             return false;
         }
         int x = Math.abs(start.getX() - end.getX());
