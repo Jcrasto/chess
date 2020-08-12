@@ -18,6 +18,8 @@ public class Board {
 
     public void resetBoard() {
 
+        this.squares = new Square[8][8];
+
         //White Pieces
 
         squares[0][0] = new Square(0, 0, new Rook(true));

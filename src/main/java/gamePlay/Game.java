@@ -11,7 +11,13 @@ public class Game {
     private GameStatus status;
     private List<Move> movesPlayed;
 
-    private void intitialize(Player p1, Player p2) {
+    public Game(){
+        this.players = new Player[2];
+        this.board = new Board();
+        this.status = GameStatus.ACTIVE;
+    }
+
+    void initialize(Player p1, Player p2) {
         players[0] = p1;
         players[1] = p2;
 
