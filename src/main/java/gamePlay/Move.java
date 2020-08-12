@@ -1,6 +1,7 @@
 package gamePlay;
 
 import pieces.*;
+import java.util.Scanner;
 
 public class Move {
     private Player player;
@@ -23,6 +24,14 @@ public class Move {
 
     public void setCastlingMove(boolean castlingMove) {
         this.castlingMove = castlingMove;
+    }
+
+    public Square getStart(){
+        return this.start;
+    }
+
+    public Square getEnd(){
+        return this.end;
     }
 
 }
