@@ -2,6 +2,7 @@ package gamePlay;
 
 import pieces.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
@@ -15,6 +16,7 @@ public class Game {
         this.players = new Player[2];
         this.board = new Board();
         this.status = GameStatus.ACTIVE;
+        this.movesPlayed = new ArrayList<>();
     }
 
     void initialize(Player p1, Player p2) {
