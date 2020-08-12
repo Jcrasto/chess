@@ -7,33 +7,33 @@ public class Square {
     private int x;
     private int y;
 
-    public Square(int x, int y, Piece piece){
+    public Square(int x, int y, Piece piece) {
         this.setPiece(piece);
         this.setX(x);
         this.setY(y);
     }
 
-    public Piece getPiece(){
+    public Piece getPiece() {
         return this.piece;
     }
 
-    public void setPiece(Piece p){
+    public void setPiece(Piece p) {
         this.piece = p;
     }
 
-    public int getX(){
+    public int getX() {
         return this.x;
     }
 
-    public void setX(int x){
+    public void setX(int x) {
         this.x = x;
     }
 
-    public int getY(){
+    public int getY() {
         return this.y;
     }
 
-    public void setY(int y){
+    public void setY(int y) {
         this.y = y;
     }
 }
