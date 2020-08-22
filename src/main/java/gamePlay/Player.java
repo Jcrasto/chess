@@ -14,11 +14,4 @@ public abstract class Player {
         return this.humanPlayer == true;
     }
 
-//    public String getMove(){
-//        Scanner scanner = new Scanner(System.in);
-//        System.out.println("enter a move:");
-//        String moveString = scanner.nextLine();
-//        return moveString;
-//    }
-
 }
