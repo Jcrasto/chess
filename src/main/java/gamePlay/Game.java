@@ -1,7 +1,5 @@
 package gamePlay;
 
-import pieces.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +12,7 @@ public class Game {
     private List<String> movesPlayed;
 
 
-    public Game(){
+    public Game() {
         this.players = new Player[2];
         this.board = new Board();
         this.status = GameStatus.WHITE_TURN;
@@ -34,28 +32,28 @@ public class Game {
         movesPlayed.clear();
     }
 
-    public boolean isEnd(){
+    public boolean isEnd() {
         return (this.getStatus() != GameStatus.WHITE_TURN && this.getStatus() != GameStatus.BLACK_TURN);
     }
 
-    public GameStatus getStatus(){
+    public GameStatus getStatus() {
         return this.status;
     }
 
-    public void setStatus(GameStatus status){
+    public void setStatus(GameStatus status) {
         this.status = status;
     }
 
-    public boolean playerMove(String moveString) throws Exception{
+    public boolean playerMove(String moveString) throws Exception {
         String[] moveSplit = moveString.split(" ");
-        if (moveSplit.length != 2){
+        if (moveSplit.length != 2) {
             throw new Exception("Enter start and end positions separated by a space");
         }
 
-        if (status == GameStatus.WHITE_TURN){
+        if (status == GameStatus.WHITE_TURN) {
             currentTurn = players[0];
         }
-        if (status == GameStatus.BLACK_TURN){
+        if (status == GameStatus.BLACK_TURN) {
             currentTurn = players[1];
         }
         return true;

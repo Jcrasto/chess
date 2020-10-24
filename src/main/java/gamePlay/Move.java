@@ -1,13 +1,12 @@
 package gamePlay;
 
-import pieces.*;
-import java.util.Scanner;
+import pieces.Piece;
 
 public class Move {
-    private Player player;
-    private Square start;
-    private Square end;
-    private Piece pieceMoved;
+    private final Player player;
+    private final Square start;
+    private final Square end;
+    private final Piece pieceMoved;
     private Piece pieceCaptured;
     private boolean castlingMove = false;
 
@@ -26,11 +25,11 @@ public class Move {
         this.castlingMove = castlingMove;
     }
 
-    public Square getStart(){
+    public Square getStart() {
         return this.start;
     }
 
-    public Square getEnd(){
+    public Square getEnd() {
         return this.end;
     }
 

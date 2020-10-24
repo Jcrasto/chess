@@ -19,7 +19,7 @@ public class GamePlayBootstrap {
                 System.out.println("White Move " + move);
                 try {
                     game.playerMove(move);
-                } catch (Exception e){
+                } catch (Exception e) {
                     System.out.println(e);
                     continue;
                 }
@@ -29,8 +29,15 @@ public class GamePlayBootstrap {
             while (game.getStatus() == GameStatus.BLACK_TURN) {
                 Scanner myObj = new Scanner(System.in);
                 System.out.println("Black Move");
-
                 String move = myObj.nextLine();
+
+                try {
+                    game.playerMove(move);
+                } catch (Exception e) {
+                    System.out.println(e);
+                    continue;
+                }
+
                 System.out.println("Black Move " + move);
                 game.setStatus(GameStatus.WHITE_TURN);
             }
