@@ -2,8 +2,11 @@ package gamePlay;
 
 import java.util.Scanner;
 
-public abstract class Player {
+public class Player {
     public boolean whiteSide;
+    Player(boolean isWhite){
+        whiteSide = isWhite;
+    }
 
     public boolean isWhiteSide() {
         return this.whiteSide == true;
