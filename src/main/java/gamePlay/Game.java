@@ -15,28 +15,28 @@ public class Game {
     public Game(){
         this.players = new Player[2];
         this.board = new Board();
-        this.status = GameStatus.ACTIVE;
+        this.status = GameStatus.WHITE_TURN;
         this.movesPlayed = new ArrayList<>();
     }
 
-    void initialize(Player p1, Player p2) {
-        players[0] = p1;
-        players[1] = p2;
+    void initialize(Player white, Player black) {
+        players[0] = white;
+        players[1] = black;
 
         board.resetBoard();
 
-        if (p1.isWhiteSide()){
-            this.currentTurn = p1;
+        if (this.status == GameStatus.WHITE_TURN){
+            this.currentTurn = white;
         }
-        else {
-            this.currentTurn = p2;
+        else if (this.status == GameStatus.BLACK_TURN) {
+            this.currentTurn = black;
         }
 
         movesPlayed.clear();
     }
 
     public boolean isEnd(){
-        return this.getStatus() != GameStatus.ACTIVE;
+        return (this.getStatus() != GameStatus.WHITE_TURN ||this.getStatus() != GameStatus.BLACK_TURN);
     }
 
     public GameStatus getStatus(){
