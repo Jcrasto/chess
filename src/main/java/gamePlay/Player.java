@@ -1,14 +1,14 @@
 package gamePlay;
 
-public abstract class Player {
+import java.util.Scanner;
+
+public class Player {
     public boolean whiteSide;
-    public boolean humanPlayer;
+    Player(boolean isWhite){
+        whiteSide = isWhite;
+    }
 
     public boolean isWhiteSide() {
         return this.whiteSide == true;
-    }
-
-    public boolean isHumanPlayer() {
-        return this.humanPlayer == true;
     }
 }

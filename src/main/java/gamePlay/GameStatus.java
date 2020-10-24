@@ -1,7 +1,8 @@
 package gamePlay;
 
 public enum GameStatus{
-    ACTIVE,
+    WHITE_TURN,
+    BLACK_TURN,
     BLACK_WIN,
     WHITE_WIN,
     RESIGNATION,
