@@ -1,6 +1,7 @@
 package gamePlay;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Game {
@@ -85,6 +86,32 @@ public class Game {
         if (start.length() == 3){
             if (start.charAt(0) != end.charAt(0)){
                 throw new Exception("Start and end piece must match");
+            }
+            ArrayList<Character> pieceList = new ArrayList<Character>(Arrays.asList('K', 'Q', 'R', 'N', 'B'));
+            if (pieceList.contains(start.charAt(0))){
+                moveArray[0] = moveArray[0].substring(1);
+                moveArray[1] = moveArray[1].substring(1);
+            } else {
+                throw new Exception ("Invalid piece");
+            }
+
+        }
+
+        for (String move: moveArray){
+            Character xCoord = move.charAt(0);
+            Character yCoord = move.charAt(1);
+            if (xCoord >= 'a' && xCoord <= 'h'){
+                if (Character.isDigit(yCoord)){
+                    int y = Character.getNumericValue(yCoord);;
+                    if ( y < 1 || y > 8){
+                        System.out.println(y);
+                        throw new Exception ("Second character should be a number between 1 and 8");
+                    }
+                } else {
+                    throw new Exception ("Second character should be a number between 1 and 8");
+                }
+            } else{
+                throw new Exception("First letter of square should be between a and h");
             }
         }
 
