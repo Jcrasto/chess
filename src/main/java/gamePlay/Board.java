@@ -5,7 +5,9 @@ import pieces.*;
 import java.util.HashMap;
 
 public class Board {
+
     Square[][] squares;
+    HashMap<Character, Integer> letterCoords = new HashMap<>();
 
     public Board() {
         this.resetBoard();
@@ -60,17 +62,50 @@ public class Board {
             }
         }
 
+        letterCoords.put('a', 1);
+        letterCoords.put('b', 2);
+        letterCoords.put('c', 3);
+        letterCoords.put('d', 4);
+        letterCoords.put('e', 5);
+        letterCoords.put('f', 6);
+        letterCoords.put('g', 7);
+        letterCoords.put('h', 8);
+
     }
 
-    public void move(Player player,String[] moveArray) throws Exception{
+    public void move(Player player, String[] moveArray) throws Exception {
         String startString = moveArray[0];
         String endString = moveArray[1];
         boolean isWhite = player.isWhiteSide();
-        if (startString.length() == 3){
-
+        if (startString.length() == 3) {
+            Character pieceChar = startString.charAt(0);
+            if (pieceChar.equals('K')) {
+                PieceType pieceToMove = PieceType.KING;
+            } else if (pieceChar.equals('Q')) {
+                PieceType pieceToMove = PieceType.QUEEN;
+            } else if (pieceChar.equals('R')) {
+                PieceType pieceToMove = PieceType.ROOK;
+            } else if (pieceChar.equals('B')) {
+                PieceType pieceToMove = PieceType.BISHOP;
+            } else if (pieceChar.equals('N')) {
+                PieceType pieceToMove = PieceType.KNIGHT;
+            } else {
+                throw new Exception("Piece must be K,Q,R,B,N");
+            }
+            startString = startString.substring(1, 3);
+            endString = endString.substring(1, 3);
         } else {
-
+            PieceType pieceToMove = PieceType.PAWN;
         }
+        Character startXCoord = startString.charAt(0);
+        Character startYCoord = endString.charAt(1);
+        int x1 = letterCoords.get(startXCoord);
+        int y1 = Character.getNumericValue(startYCoord);
+        Character endXCoord = startString.charAt(0);
+        Character endYCoord = endString.charAt(1);
+        int x2 = letterCoords.get(endXCoord);
+        int y2 = Character.getNumericValue(endYCoord);
 
     }
 }
+

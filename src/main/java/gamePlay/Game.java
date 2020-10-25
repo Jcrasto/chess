@@ -92,7 +92,7 @@ public class Game {
                 moveArray[0] = moveArray[0].substring(1);
                 moveArray[1] = moveArray[1].substring(1);
             } else {
-                throw new Exception ("Invalid piece");
+                throw new Exception ("Piece must be K,Q,R,B,N");
             }
 
         }
