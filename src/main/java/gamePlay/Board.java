@@ -41,14 +41,14 @@ public class Board {
 
         //Black Pieces
 
-        squares[0][7] = new Square(0, 0, new Rook(false));
-        squares[1][7] = new Square(1, 0, new Knight(false));
-        squares[2][7] = new Square(2, 0, new Bishop(false));
-        squares[3][7] = new Square(3, 0, new Queen(false));
-        squares[4][7] = new Square(4, 0, new King(false));
-        squares[5][7] = new Square(5, 0, new Bishop(false));
-        squares[6][7] = new Square(6, 0, new Knight(false));
-        squares[7][7] = new Square(7, 0, new Rook(false));
+        squares[0][7] = new Square(0, 7, new Rook(false));
+        squares[1][7] = new Square(1, 7, new Knight(false));
+        squares[2][7] = new Square(2, 7, new Bishop(false));
+        squares[3][7] = new Square(3, 7, new Queen(false));
+        squares[4][7] = new Square(4, 7, new King(false));
+        squares[5][7] = new Square(5, 7, new Bishop(false));
+        squares[6][7] = new Square(6, 7, new Knight(false));
+        squares[7][7] = new Square(7, 7, new Rook(false));
 
         for (int i = 0; i <= 7; i++) {
             squares[i][6] = new Square(i, 6, new Pawn(false));
@@ -77,25 +77,26 @@ public class Board {
         String startString = moveArray[0];
         String endString = moveArray[1];
         boolean isWhite = player.isWhiteSide();
+        PieceType pieceToMove = null;
         if (startString.length() == 3) {
             Character pieceChar = startString.charAt(0);
             if (pieceChar.equals('K')) {
-                PieceType pieceToMove = PieceType.KING;
+                pieceToMove = PieceType.KING;
             } else if (pieceChar.equals('Q')) {
-                PieceType pieceToMove = PieceType.QUEEN;
+                pieceToMove = PieceType.QUEEN;
             } else if (pieceChar.equals('R')) {
-                PieceType pieceToMove = PieceType.ROOK;
+                pieceToMove = PieceType.ROOK;
             } else if (pieceChar.equals('B')) {
-                PieceType pieceToMove = PieceType.BISHOP;
+                pieceToMove = PieceType.BISHOP;
             } else if (pieceChar.equals('N')) {
-                PieceType pieceToMove = PieceType.KNIGHT;
+                pieceToMove = PieceType.KNIGHT;
             } else {
                 throw new Exception("Piece must be K,Q,R,B,N");
             }
             startString = startString.substring(1, 3);
             endString = endString.substring(1, 3);
         } else {
-            PieceType pieceToMove = PieceType.PAWN;
+            pieceToMove = PieceType.PAWN;
         }
         Character startXCoord = startString.charAt(0);
         Character startYCoord = endString.charAt(1);
@@ -105,6 +106,12 @@ public class Board {
         Character endYCoord = endString.charAt(1);
         int x2 = letterCoords.get(endXCoord);
         int y2 = Character.getNumericValue(endYCoord);
+
+        if (squares[x1][y1].getPiece().getType() == pieceToMove){
+
+        }else{
+            throw new Exception();
+        }
 
     }
 }
