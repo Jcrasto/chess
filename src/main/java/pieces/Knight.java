@@ -4,6 +4,9 @@ import gamePlay.Board;
 import gamePlay.Square;
 
 public class Knight extends Piece {
+
+    private final PieceType type = PieceType.KNIGHT;
+
     public Knight(boolean white) {
         super(white);
     }

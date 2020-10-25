@@ -2,6 +2,8 @@ package gamePlay;
 
 import pieces.*;
 
+import java.util.HashMap;
+
 public class Board {
     Square[][] squares;
 
@@ -63,8 +65,12 @@ public class Board {
     public void move(Player player,String[] moveArray) throws Exception{
         String startString = moveArray[0];
         String endString = moveArray[1];
-
         boolean isWhite = player.isWhiteSide();
+        if (startString.length() == 3){
+
+        } else {
+
+        }
 
     }
 }

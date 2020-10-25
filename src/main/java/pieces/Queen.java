@@ -5,6 +5,8 @@ import gamePlay.Square;
 
 public class Queen extends Piece {
 
+    private PieceType type = PieceType.QUEEN;
+
     public Queen(boolean white) {
         super(white);
     }
