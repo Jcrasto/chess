@@ -5,6 +5,9 @@ import gamePlay.Square;
 
 
 public class Bishop extends Piece {
+
+    private final PieceType type = PieceType.BISHOP;
+
     public Bishop(boolean white) {
         super(white);
     }

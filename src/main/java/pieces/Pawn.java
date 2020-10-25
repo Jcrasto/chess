@@ -4,6 +4,9 @@ import gamePlay.Board;
 import gamePlay.Square;
 
 public class Pawn extends Piece {
+
+    private final PieceType type = PieceType.PAWN;
+
     public Pawn(boolean white) {
         super(white);
     }

@@ -4,6 +4,9 @@ import gamePlay.Board;
 import gamePlay.Square;
 
 public class Rook extends Piece {
+
+    private final PieceType type = PieceType.ROOK;
+
     public Rook(boolean white) {
         super(white);
     }

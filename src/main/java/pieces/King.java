@@ -4,15 +4,13 @@ import gamePlay.Board;
 import gamePlay.Square;
 
 public class King extends Piece {
-    private boolean castled = false;
+
+    private final PieceType type = PieceType.KING;
 
     public King(boolean white) {
         super(white);
     }
 
-    public boolean isCastled() {
-        return this.castled == true;
-    }
 
     @Override
     public boolean canMove(Board board, Square start, Square end) {
@@ -35,8 +33,4 @@ public class King extends Piece {
         return true;
     }
 
-    public boolean isCastlingMove() {
-        //TODO check if the start and end positions are correct?
-        return false;
-    }
 }

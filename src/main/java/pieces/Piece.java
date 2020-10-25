@@ -6,6 +6,7 @@ import gamePlay.Square;
 public abstract class Piece {
     private boolean captured = false;
     private boolean white = false;
+    private PieceType type = null;
 
     public Piece(boolean white) {
         this.setWhite(white);
@@ -28,4 +29,9 @@ public abstract class Piece {
     }
 
     public abstract boolean canMove(Board board, Square start, Square end);
+
+    public PieceType getType(){
+        return type;
+    }
+
 }
