@@ -45,9 +45,18 @@ public class Game {
     }
 
     public boolean playerMove(String moveString) throws Exception {
-        String[] moveSplit = moveString.split(" ");
-        if (moveSplit.length != 2) {
-            throw new Exception("Enter start and end positions separated by a space");
+        String[] moveArray = moveString.split(" ");
+
+        try{
+            checkMoveSyntax(moveArray);
+        } catch(Exception e){
+            throw e;
+        }
+
+        try {
+            board.move(currentTurn, moveArray);
+        } catch(Exception e){
+            throw e;
         }
 
         if (status == GameStatus.WHITE_TURN) {
@@ -57,6 +66,28 @@ public class Game {
             currentTurn = players[1];
         }
         return true;
+    }
+    public void checkMoveSyntax(String[] moveArray) throws Exception{
+        if (moveArray.length != 2) {
+            throw new Exception("Enter start and end positions separated by a space");
+        }
+
+        String start = moveArray[0];
+        String end = moveArray[1];
+
+        if(start.length() != end.length()){
+            throw new Exception("Move lengths must match");
+        }
+
+        if (start.length() < 2 || start.length() > 3){
+            throw new Exception("Enter a valid length move");
+        }
+        if (start.length() == 3){
+            if (start.charAt(0) != end.charAt(0)){
+                throw new Exception("Start and end piece must match");
+            }
+        }
+
     }
 //        Square startSquare = board.getSquare(startX, startY);
 //        Square endSquare = board.getSquare(endX, endY);

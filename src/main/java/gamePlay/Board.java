@@ -59,4 +59,12 @@ public class Board {
         }
 
     }
+
+    public void move(Player player,String[] moveArray) throws Exception{
+        String startString = moveArray[0];
+        String endString = moveArray[1];
+
+        boolean isWhite = player.isWhiteSide();
+
+    }
 }
