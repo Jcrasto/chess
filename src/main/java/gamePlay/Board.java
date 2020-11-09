@@ -78,7 +78,9 @@ public class Board {
         String endString = moveArray[1];
         boolean isWhite = player.isWhiteSide();
         PieceType pieceToMove = null;
-        if (startString.length() == 3) {
+        if (startString.length() == 2) {
+            pieceToMove = PieceType.PAWN;
+        } else {
             Character pieceChar = startString.charAt(0);
             if (pieceChar.equals('K')) {
                 pieceToMove = PieceType.KING;
@@ -95,8 +97,6 @@ public class Board {
             }
             startString = startString.substring(1, 3);
             endString = endString.substring(1, 3);
-        } else {
-            pieceToMove = PieceType.PAWN;
         }
         Character startXCoord = startString.charAt(0);
         Character startYCoord = startString.charAt(1);

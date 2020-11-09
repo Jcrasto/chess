@@ -55,6 +55,7 @@ public class Game {
         }
 
         try {
+            moveArray = moveString.split(" ");
             board.move(currentTurn, moveArray);
         } catch(Exception e){
             throw e;
