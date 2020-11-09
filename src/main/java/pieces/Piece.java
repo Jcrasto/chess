@@ -28,7 +28,7 @@ public abstract class Piece {
         this.captured = captured;
     }
 
-    public abstract boolean canMove(Board board, Square start, Square end);
+    public abstract boolean canMove(Square[][] squares,int x1, int y1, int x2, int y2);
 
     public PieceType getType(){
         return type;

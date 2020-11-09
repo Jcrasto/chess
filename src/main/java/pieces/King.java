@@ -11,20 +11,24 @@ public class King extends Piece {
         super(white);
     }
 
+    public PieceType getType(){
+        return this.type;
+    }
 
     @Override
-    public boolean canMove(Board board, Square start, Square end) {
-        if (end.getPiece().isWhite() == this.isWhite()) {
-            return false;
-        }
-        int x = Math.abs(start.getX() - end.getX());
-        int y = Math.abs(start.getY() - end.getY());
-
-        if (x + y == 1) {
-            //TODO if not moving into check
-            return true;
-        }
-        return this.isValidCastling(board, start, end);
+    public boolean canMove(Square[][] squares,int x1, int y1, int x2, int y2) {
+//        if (end.getPiece().isWhite() == this.isWhite()) {
+//            return false;
+//        }
+//        int x = Math.abs(start.getX() - end.getX());
+//        int y = Math.abs(start.getY() - end.getY());
+//
+//        if (x + y == 1) {
+//            //TODO if not moving into check
+//            return true;
+//        }
+//        return this.isValidCastling(board, start, end);
+        return true;
     }
 
     private boolean isValidCastling(Board board, Square start, Square end) {
