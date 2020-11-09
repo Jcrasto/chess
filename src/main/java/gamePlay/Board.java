@@ -114,7 +114,7 @@ public class Board {
             throw new Exception(String.format("No piece on %s",startString));
         }
         if (startSquare.getPiece().getType() == pieceToMove){
-            System.out.println("Got Here");
+            startSquare.getPiece().canMove(squares,x1,y1,x2,y2);
         }else{
             throw new Exception(String.format("No %s on %s", pieceToMove,startString));
         }

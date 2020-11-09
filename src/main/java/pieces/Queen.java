@@ -16,20 +16,20 @@ public class Queen extends Piece {
     }
 
     @Override
-    public boolean canMove(Board board, Square start, Square end) {
-        if (end.getPiece().isWhite() == this.isWhite()) {
-            return false;
-        }
-        int x = Math.abs(start.getX() - end.getX());
-        int y = Math.abs(start.getY() - end.getY());
-        if (x > 0 && x < 8 && y == 0) {
-            return true;
-        } else if (x == 0 && y > 0 && y < 8) {
-            return true;
-        } else if (x != 0 && y != 0) {
-            return x / y == 1;
-        }
-
-        return false;
+    public boolean canMove(Square[][] squares,int x1, int y1, int x2, int y2) {
+//        if (end.getPiece().isWhite() == this.isWhite()) {
+//            return false;
+//        }
+//        int x = Math.abs(start.getX() - end.getX());
+//        int y = Math.abs(start.getY() - end.getY());
+//        if (x > 0 && x < 8 && y == 0) {
+//            return true;
+//        } else if (x == 0 && y > 0 && y < 8) {
+//            return true;
+//        } else if (x != 0 && y != 0) {
+//            return x / y == 1;
+//        }
+//
+        return true;
     }
 }

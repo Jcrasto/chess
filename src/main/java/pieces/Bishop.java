@@ -17,16 +17,18 @@ public class Bishop extends Piece {
     }
 
     @Override
-    public boolean canMove(Board board, Square start, Square end) {
-        if (end.getPiece().isWhite() == this.isWhite()) {
-            return false;
-        }
-        int x = Math.abs(start.getX() - end.getX());
-        int y = Math.abs(start.getY() - end.getY());
+    public boolean canMove(Square[][] squares,int x1, int y1, int x2, int y2) {
 
-        if (x != 0 && y != 0) {
-            return x / y == 1;
-        }
-        return false;
+//        if (squares[x2][y2].getPiece().isWhite() == this.isWhite()) {
+//            return false;
+//        }
+//        int x = Math.abs(start.getX() - end.getX());
+//        int y = Math.abs(start.getY() - end.getY());
+//
+//        if (x != 0 && y != 0) {
+//            return x / y == 1;
+//        }
+//        return false;
+        return true;
     }
 }
