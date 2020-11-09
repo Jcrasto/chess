@@ -12,6 +12,10 @@ public class Bishop extends Piece {
         super(white);
     }
 
+    public PieceType getType(){
+        return this.type;
+    }
+
     @Override
     public boolean canMove(Board board, Square start, Square end) {
         if (end.getPiece().isWhite() == this.isWhite()) {

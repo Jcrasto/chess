@@ -58,18 +58,18 @@ public class Board {
 
         for (int i = 2; i < 6; i++) {
             for (int j = 0; j <= 7; j++) {
-                squares[i][j] = new Square(i, j, null);
+                squares[j][i] = new Square(j, i, null);
             }
         }
 
-        letterCoords.put('a', 1);
-        letterCoords.put('b', 2);
-        letterCoords.put('c', 3);
-        letterCoords.put('d', 4);
-        letterCoords.put('e', 5);
-        letterCoords.put('f', 6);
-        letterCoords.put('g', 7);
-        letterCoords.put('h', 8);
+        letterCoords.put('a', 0);
+        letterCoords.put('b', 1);
+        letterCoords.put('c', 2);
+        letterCoords.put('d', 3);
+        letterCoords.put('e', 4);
+        letterCoords.put('f', 5);
+        letterCoords.put('g', 6);
+        letterCoords.put('h', 7);
 
     }
 
@@ -99,18 +99,24 @@ public class Board {
             pieceToMove = PieceType.PAWN;
         }
         Character startXCoord = startString.charAt(0);
-        Character startYCoord = endString.charAt(1);
+        Character startYCoord = startString.charAt(1);
         int x1 = letterCoords.get(startXCoord);
-        int y1 = Character.getNumericValue(startYCoord);
-        Character endXCoord = startString.charAt(0);
+        int y1 = Character.getNumericValue(startYCoord) - 1;
+        Character endXCoord = endString.charAt(0);
         Character endYCoord = endString.charAt(1);
         int x2 = letterCoords.get(endXCoord);
-        int y2 = Character.getNumericValue(endYCoord);
+        int y2 = Character.getNumericValue(endYCoord) - 1;
 
-        if (squares[x1][y1].getPiece().getType() == pieceToMove){
+        Square startSquare = getSquare(x1,y1);
+        Square endSquare = getSquare(x2,y2);
 
+        if(startSquare.getPiece().equals(null)){
+            throw new Exception(String.format("No piece on %s",startString));
+        }
+        if (startSquare.getPiece().getType() == pieceToMove){
+            System.out.println("Got Here");
         }else{
-            throw new Exception();
+            throw new Exception(String.format("No %s on %s", pieceToMove,startString));
         }
 
     }
