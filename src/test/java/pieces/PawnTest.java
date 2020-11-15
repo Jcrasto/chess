@@ -20,4 +20,20 @@ public class PawnTest {
         }
         game.playerMove("d2 d4");
     }
+
+    @Test
+    public void QueensGambitTest() throws Exception{
+        Game game = new Game();
+        Player white = new Player(true);
+        Player black = new Player(false);
+        game.initialize(white, black);
+        game.setStatus(GameStatus.WHITE_TURN);
+        game.playerMove("d2 d4");
+        game.setStatus(GameStatus.BLACK_TURN);
+        game.playerMove("d7 d5");
+        game.setStatus(GameStatus.WHITE_TURN);
+        game.playerMove("c2 c4");
+
+
+    }
 }
