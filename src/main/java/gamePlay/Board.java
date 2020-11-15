@@ -126,5 +126,58 @@ public class Board {
         }
 
     }
+
+    public void move(Move move) throws Exception{
+        String startString = move.moveArray[0];
+        String endString = move.moveArray[1];
+        boolean isWhite = move.player.isWhiteSide();
+        PieceType pieceTypeToMove = null;
+        if (startString.length() == 2) {
+            pieceTypeToMove = PieceType.PAWN;
+        } else {
+            Character pieceChar = startString.charAt(0);
+            if (pieceChar.equals('K')) {
+                pieceTypeToMove = PieceType.KING;
+            } else if (pieceChar.equals('Q')) {
+                pieceTypeToMove = PieceType.QUEEN;
+            } else if (pieceChar.equals('R')) {
+                pieceTypeToMove = PieceType.ROOK;
+            } else if (pieceChar.equals('B')) {
+                pieceTypeToMove = PieceType.BISHOP;
+            } else if (pieceChar.equals('N')) {
+                pieceTypeToMove = PieceType.KNIGHT;
+            } else {
+                throw new Exception("Piece must be K,Q,R,B,N");
+            }
+            startString = startString.substring(1, 3);
+            endString = endString.substring(1, 3);
+        }
+        Character startXCoord = startString.charAt(0);
+        Character startYCoord = startString.charAt(1);
+        int x1 = letterCoords.get(startXCoord);
+        int y1 = Character.getNumericValue(startYCoord) - 1;
+        Character endXCoord = endString.charAt(0);
+        Character endYCoord = endString.charAt(1);
+        int x2 = letterCoords.get(endXCoord);
+        int y2 = Character.getNumericValue(endYCoord) - 1;
+
+        Square startSquare = getSquare(x1,y1);
+        Square endSquare = getSquare(x2,y2);
+
+        if(startSquare.getPiece().equals(null)){
+            throw new Exception(String.format("No piece on %s",startString));
+        }
+        if (startSquare.getPiece().getType() == pieceTypeToMove){
+            if(startSquare.getPiece().canMove(squares,x1,y1,x2,y2)){
+                Piece pieceToMove = startSquare.getPiece();
+                squares[x1][y1].setPiece(null);
+                squares[x2][y2].setPiece(pieceToMove);
+            } else {
+                throw new Exception (String.format("cant move %s on %s to %s", pieceTypeToMove, startString, endString));
+            }
+        }else{
+            throw new Exception(String.format("No %s on %s", pieceTypeToMove,startString));
+        }
+    }
 }
 
