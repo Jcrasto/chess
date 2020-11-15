@@ -7,7 +7,6 @@ import java.util.HashMap;
 public class Board {
 
     Square[][] squares;
-    HashMap<Character, Integer> letterCoords = new HashMap<>();
 
     public Board() {
         this.resetBoard();
@@ -62,121 +61,27 @@ public class Board {
             }
         }
 
-        letterCoords.put('a', 0);
-        letterCoords.put('b', 1);
-        letterCoords.put('c', 2);
-        letterCoords.put('d', 3);
-        letterCoords.put('e', 4);
-        letterCoords.put('f', 5);
-        letterCoords.put('g', 6);
-        letterCoords.put('h', 7);
-
     }
 
-    public void move(Player player, String[] moveArray) throws Exception {
-        String startString = moveArray[0];
-        String endString = moveArray[1];
-        boolean isWhite = player.isWhiteSide();
-        PieceType pieceTypeToMove = null;
-        if (startString.length() == 2) {
-            pieceTypeToMove = PieceType.PAWN;
-        } else {
-            Character pieceChar = startString.charAt(0);
-            if (pieceChar.equals('K')) {
-                pieceTypeToMove = PieceType.KING;
-            } else if (pieceChar.equals('Q')) {
-                pieceTypeToMove = PieceType.QUEEN;
-            } else if (pieceChar.equals('R')) {
-                pieceTypeToMove = PieceType.ROOK;
-            } else if (pieceChar.equals('B')) {
-                pieceTypeToMove = PieceType.BISHOP;
-            } else if (pieceChar.equals('N')) {
-                pieceTypeToMove = PieceType.KNIGHT;
-            } else {
-                throw new Exception("Piece must be K,Q,R,B,N");
-            }
-            startString = startString.substring(1, 3);
-            endString = endString.substring(1, 3);
-        }
-        Character startXCoord = startString.charAt(0);
-        Character startYCoord = startString.charAt(1);
-        int x1 = letterCoords.get(startXCoord);
-        int y1 = Character.getNumericValue(startYCoord) - 1;
-        Character endXCoord = endString.charAt(0);
-        Character endYCoord = endString.charAt(1);
-        int x2 = letterCoords.get(endXCoord);
-        int y2 = Character.getNumericValue(endYCoord) - 1;
-
-        Square startSquare = getSquare(x1,y1);
-        Square endSquare = getSquare(x2,y2);
-
-        if(startSquare.getPiece().equals(null)){
-            throw new Exception(String.format("No piece on %s",startString));
-        }
-        if (startSquare.getPiece().getType() == pieceTypeToMove){
-            if(startSquare.getPiece().canMove(squares,x1,y1,x2,y2)){
-                Piece pieceToMove = startSquare.getPiece();
-                squares[x1][y1].setPiece(null);
-                squares[x2][y2].setPiece(pieceToMove);
-            } else {
-                throw new Exception (String.format("cant move %s on %s to %s", pieceTypeToMove, startString, endString));
-            }
-        }else{
-            throw new Exception(String.format("No %s on %s", pieceTypeToMove,startString));
-        }
-
-    }
 
     public void move(Move move) throws Exception{
-        String startString = move.moveArray[0];
-        String endString = move.moveArray[1];
-        boolean isWhite = move.player.isWhiteSide();
-        PieceType pieceTypeToMove = null;
-        if (startString.length() == 2) {
-            pieceTypeToMove = PieceType.PAWN;
-        } else {
-            Character pieceChar = startString.charAt(0);
-            if (pieceChar.equals('K')) {
-                pieceTypeToMove = PieceType.KING;
-            } else if (pieceChar.equals('Q')) {
-                pieceTypeToMove = PieceType.QUEEN;
-            } else if (pieceChar.equals('R')) {
-                pieceTypeToMove = PieceType.ROOK;
-            } else if (pieceChar.equals('B')) {
-                pieceTypeToMove = PieceType.BISHOP;
-            } else if (pieceChar.equals('N')) {
-                pieceTypeToMove = PieceType.KNIGHT;
-            } else {
-                throw new Exception("Piece must be K,Q,R,B,N");
-            }
-            startString = startString.substring(1, 3);
-            endString = endString.substring(1, 3);
-        }
-        Character startXCoord = startString.charAt(0);
-        Character startYCoord = startString.charAt(1);
-        int x1 = letterCoords.get(startXCoord);
-        int y1 = Character.getNumericValue(startYCoord) - 1;
-        Character endXCoord = endString.charAt(0);
-        Character endYCoord = endString.charAt(1);
-        int x2 = letterCoords.get(endXCoord);
-        int y2 = Character.getNumericValue(endYCoord) - 1;
 
-        Square startSquare = getSquare(x1,y1);
-        Square endSquare = getSquare(x2,y2);
+        Square startSquare = getSquare(move.x1,move.y1);
+        Square endSquare = getSquare(move.x2,move.y2);
 
         if(startSquare.getPiece().equals(null)){
-            throw new Exception(String.format("No piece on %s",startString));
+            throw new Exception(String.format("No piece on %s",move.moveArray[0]));
         }
-        if (startSquare.getPiece().getType() == pieceTypeToMove){
-            if(startSquare.getPiece().canMove(squares,x1,y1,x2,y2)){
+        if (startSquare.getPiece().getType() == move.pieceToMoveType){
+            if(startSquare.getPiece().canMove(squares,move.x1,move.y1,move.x2,move.y2)){
                 Piece pieceToMove = startSquare.getPiece();
-                squares[x1][y1].setPiece(null);
-                squares[x2][y2].setPiece(pieceToMove);
+                squares[move.x1][move.y1].setPiece(null);
+                squares[move.x2][move.y2].setPiece(pieceToMove);
             } else {
-                throw new Exception (String.format("cant move %s on %s to %s", pieceTypeToMove, startString, endString));
+                throw new Exception (String.format("cant move %s on %s to %s", move.pieceToMoveType, move.moveArray[0], move.moveArray[1]));
             }
         }else{
-            throw new Exception(String.format("No %s on %s", pieceTypeToMove,startString));
+            throw new Exception(String.format("No %s on %s", move.pieceToMoveType, move.moveArray[0]));
         }
     }
 }

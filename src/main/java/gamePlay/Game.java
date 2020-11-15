@@ -52,12 +52,7 @@ public class Game {
         String[] moveArray = moveString.split(" ");
         try{
             Move move = new Move(currentTurn, moveString);
-        } catch(Exception e){
-            throw e;
-        }
-        try {
-            moveArray = moveString.split(" ");
-            board.move(currentTurn, moveArray);
+            board.move(move);
             movesPlayed.add(moveString);
         } catch(Exception e){
             throw e;
