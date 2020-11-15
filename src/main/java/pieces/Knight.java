@@ -1,6 +1,7 @@
 package pieces;
 
 import gamePlay.Board;
+import gamePlay.Move;
 import gamePlay.Square;
 
 public class Knight extends Piece {
@@ -16,13 +17,18 @@ public class Knight extends Piece {
     }
 
     @Override
-    public boolean canMove(Square[][] squares,int x1, int y1, int x2, int y2) {
-//        if (end.getPiece().isWhite() == this.isWhite()) {
-////            return false;
-////        }
-////        int x = Math.abs(start.getX() - end.getX());
-////        int y = Math.abs(start.getY() - end.getY());
-////        return x * y == 2;
-        return true;
+    public boolean canMove(Square[][] squares, Move move) {
+        if (squares[move.x2][move.y2].getPiece() != null) {
+            if (squares[move.x2][move.y2].getPiece().isWhite() == this.isWhite()) {
+                return false;
+            }
+        }
+        int x = Math.abs(move.x2 - move.x1);
+        int y = Math.abs(move.y2 - move.y1);
+        if ( x * y == 2 ){
+            move.setPieceCaptured(squares[move.x2][move.y2].getPiece());
+            return true;
+        }
+        return false;
     }
 }
