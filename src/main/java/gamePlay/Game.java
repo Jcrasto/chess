@@ -21,7 +21,7 @@ public class Game {
         this.movesPlayed = new ArrayList<>();
     }
 
-    void initialize(Player white, Player black) {
+    public void initialize(Player white, Player black) {
         players[0] = white;
         players[1] = black;
 

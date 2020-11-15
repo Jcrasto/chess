@@ -77,21 +77,21 @@ public class Board {
         String startString = moveArray[0];
         String endString = moveArray[1];
         boolean isWhite = player.isWhiteSide();
-        PieceType pieceToMove = null;
+        PieceType pieceTypeToMove = null;
         if (startString.length() == 2) {
-            pieceToMove = PieceType.PAWN;
+            pieceTypeToMove = PieceType.PAWN;
         } else {
             Character pieceChar = startString.charAt(0);
             if (pieceChar.equals('K')) {
-                pieceToMove = PieceType.KING;
+                pieceTypeToMove = PieceType.KING;
             } else if (pieceChar.equals('Q')) {
-                pieceToMove = PieceType.QUEEN;
+                pieceTypeToMove = PieceType.QUEEN;
             } else if (pieceChar.equals('R')) {
-                pieceToMove = PieceType.ROOK;
+                pieceTypeToMove = PieceType.ROOK;
             } else if (pieceChar.equals('B')) {
-                pieceToMove = PieceType.BISHOP;
+                pieceTypeToMove = PieceType.BISHOP;
             } else if (pieceChar.equals('N')) {
-                pieceToMove = PieceType.KNIGHT;
+                pieceTypeToMove = PieceType.KNIGHT;
             } else {
                 throw new Exception("Piece must be K,Q,R,B,N");
             }
@@ -113,10 +113,16 @@ public class Board {
         if(startSquare.getPiece().equals(null)){
             throw new Exception(String.format("No piece on %s",startString));
         }
-        if (startSquare.getPiece().getType() == pieceToMove){
-            startSquare.getPiece().canMove(squares,x1,y1,x2,y2);
+        if (startSquare.getPiece().getType() == pieceTypeToMove){
+            if(startSquare.getPiece().canMove(squares,x1,y1,x2,y2)){
+                Piece pieceToMove = startSquare.getPiece();
+                squares[x1][y1].setPiece(null);
+                squares[x2][y2].setPiece(pieceToMove);
+            } else {
+                throw new Exception (String.format("cant move %s on %s to %s", pieceTypeToMove, startString, endString));
+            }
         }else{
-            throw new Exception(String.format("No %s on %s", pieceToMove,startString));
+            throw new Exception(String.format("No %s on %s", pieceTypeToMove,startString));
         }
 
     }
