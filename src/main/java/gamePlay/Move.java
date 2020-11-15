@@ -17,6 +17,7 @@ public class Move {
     public int x2;
     public int y2;
     public HashMap<Character, Integer> letterCoords = new HashMap<>();
+    public Piece pieceCaptured = null;
 
     public Move(Player player, String moveString) throws Exception {
         letterCoords.put('a', 0);
@@ -133,6 +134,10 @@ public class Move {
             pieceToMoveType = PieceType.PAWN;
         }
 
+    }
+
+    public void setPieceCaptured(Piece piece){
+        this.pieceCaptured = piece;
     }
 
 }

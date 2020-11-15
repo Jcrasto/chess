@@ -1,6 +1,7 @@
 package pieces;
 
 import gamePlay.Board;
+import gamePlay.Move;
 import gamePlay.Square;
 
 public class Rook extends Piece {
@@ -16,7 +17,7 @@ public class Rook extends Piece {
     }
 
     @Override
-    public boolean canMove(Square[][] squares,int x1, int y1, int x2, int y2) {
+    public boolean canMove(Square[][] squares, Move move) {
 //        if (end.getPiece().isWhite() == this.isWhite()) {
 //            return false;
 //        }

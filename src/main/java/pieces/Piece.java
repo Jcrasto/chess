@@ -1,6 +1,7 @@
 package pieces;
 
 import gamePlay.Board;
+import gamePlay.Move;
 import gamePlay.Square;
 
 public abstract class Piece {
@@ -28,7 +29,7 @@ public abstract class Piece {
         this.captured = captured;
     }
 
-    public abstract boolean canMove(Square[][] squares,int x1, int y1, int x2, int y2);
+    public abstract boolean canMove(Square[][] squares, Move move);
 
     public PieceType getType(){
         return type;

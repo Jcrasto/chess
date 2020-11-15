@@ -2,8 +2,6 @@ package gamePlay;
 
 import pieces.*;
 
-import java.util.HashMap;
-
 public class Board {
 
     Square[][] squares;
@@ -64,23 +62,22 @@ public class Board {
     }
 
 
-    public void move(Move move) throws Exception{
+    public void move(Move move) throws Exception {
 
-        Square startSquare = getSquare(move.x1,move.y1);
-        Square endSquare = getSquare(move.x2,move.y2);
+        Square startSquare = getSquare(move.x1, move.y1);
 
-        if(startSquare.getPiece().equals(null)){
-            throw new Exception(String.format("No piece on %s",move.moveArray[0]));
+        if (startSquare.getPiece().equals(null)) {
+            throw new Exception(String.format("No piece on %s", move.moveArray[0]));
         }
-        if (startSquare.getPiece().getType() == move.pieceToMoveType){
-            if(startSquare.getPiece().canMove(squares,move.x1,move.y1,move.x2,move.y2)){
+        if (startSquare.getPiece().getType() == move.pieceToMoveType) {
+            if (startSquare.getPiece().canMove(squares, move)) {
                 Piece pieceToMove = startSquare.getPiece();
                 squares[move.x1][move.y1].setPiece(null);
                 squares[move.x2][move.y2].setPiece(pieceToMove);
             } else {
-                throw new Exception (String.format("cant move %s on %s to %s", move.pieceToMoveType, move.moveArray[0], move.moveArray[1]));
+                throw new Exception(String.format("cant move %s on %s to %s", move.pieceToMoveType, move.moveArray[0], move.moveArray[1]));
             }
-        }else{
+        } else {
             throw new Exception(String.format("No %s on %s", move.pieceToMoveType, move.moveArray[0]));
         }
     }
