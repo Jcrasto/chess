@@ -49,6 +49,12 @@ public class Game {
     }
 
     public boolean playerMove(String moveString) throws Exception {
+        if (status == GameStatus.WHITE_TURN) {
+            currentTurn = players[0];
+        }
+        if (status == GameStatus.BLACK_TURN) {
+            currentTurn = players[1];
+        }
         try{
             Move move = new Move(currentTurn, moveString);
             board.move(move);
@@ -60,13 +66,6 @@ public class Game {
             }
         } catch(Exception e){
             throw e;
-        }
-
-        if (status == GameStatus.WHITE_TURN) {
-            currentTurn = players[0];
-        }
-        if (status == GameStatus.BLACK_TURN) {
-            currentTurn = players[1];
         }
         return true;
     }

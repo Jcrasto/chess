@@ -2,9 +2,6 @@ package gamePlay;
 
 import pieces.Piece;
 import pieces.PieceType;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 
 public class Move {

@@ -70,6 +70,9 @@ public class Board {
             throw new Exception(String.format("No piece on %s", move.moveArray[0]));
         }
         if (startSquare.getPiece().getType() == move.pieceToMoveType) {
+            if (move.player.isWhiteSide() != startSquare.getPiece().isWhite()){
+                throw new Exception("Piece is not player's to move");
+            }
             if (startSquare.getPiece().canMove(squares, move)) {
                 Piece pieceToMove = startSquare.getPiece();
                 squares[move.x1][move.y1].setPiece(null);
