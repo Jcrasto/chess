@@ -10,7 +10,7 @@ public class MoveTest {
 
     @Test
     public void badSyntaxmoves(){
-        ArrayList<String> testStrings = new ArrayList<String>(Arrays.asList("Test Test Test", "Test Test", "d2 d4"));
+        ArrayList<String> testStrings = new ArrayList<String>(Arrays.asList("d4", "Kf3"));
         for(String moveString: testStrings){
             try {
                 Move move = new Move(player, moveString);
@@ -23,13 +23,13 @@ public class MoveTest {
 
     @Test
     public void pawnMoveTest() throws Exception{
-        Move move = new Move (player,"d2 d4");
+        Move move = new Move (player,"d4");
         System.out.println(String.format("Moved: %s",move.pieceToMoveType));
     }
 
     @Test
     public void knightMoveTest() throws Exception{
-        Move move = new Move (player,"Kg1 Kf3");
+        Move move = new Move (player,"Kf3");
         System.out.println(String.format("Moved: %s",move.pieceToMoveType));
     }
 
