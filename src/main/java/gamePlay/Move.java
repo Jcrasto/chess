@@ -12,6 +12,9 @@ public class Move {
     public int y1;
     public int x2;
     public int y2;
+    public boolean capture = false;
+    public boolean check = false;
+    public boolean castle = false;
     public HashMap<Character, Integer> letterCoords = new HashMap<>();
     public Piece pieceCaptured = null;
 
@@ -29,7 +32,6 @@ public class Move {
         this.moveString = moveString;
         try {
             checkMoveSyntax();
-            setMoveCoordinates();
         } catch (Exception e) {
             throw e;
         }
@@ -49,7 +51,11 @@ public class Move {
 
     }
 
-    private void setMoveCoordinates() {
+    public void setMoveCoordinates(Square[][] squares) {
+        if (this.pieceToMoveType == PieceType.PAWN){
+
+        }
+
 //        String startString = new String();
 //        String endString = new String();
 //        if (moveArray[0].length() == 3) {
@@ -92,8 +98,12 @@ public class Move {
 
     public void setPieceCaptured(Piece piece){
         this.pieceCaptured = piece;
+        this.capture = true;
     }
 
-    public void checkCastle(){}
+    public void checkCastle(){
+        this.castle = true;
+    }
+
 
 }

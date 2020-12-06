@@ -9,7 +9,6 @@ public class Game {
     private Player currentTurn;
     private GameStatus status;
     private List<String> movesPlayed;
-    private List<String> algebraicNotation;
 
 
     public Game() {
@@ -17,7 +16,6 @@ public class Game {
         this.board = new Board();
         this.status = GameStatus.WHITE_TURN;
         this.movesPlayed = new ArrayList<>();
-        this.algebraicNotation = new ArrayList<>();
     }
 
     public void initialize(Player white, Player black) {
@@ -45,7 +43,7 @@ public class Game {
     }
 
     public List<String> getMovesPlayed(){
-        return this.algebraicNotation;
+        return this.movesPlayed;
     }
 
     public boolean playerMove(String moveString) throws Exception {
@@ -59,11 +57,6 @@ public class Game {
             Move move = new Move(currentTurn, moveString);
             board.move(move);
             movesPlayed.add(moveString);
-            if (move.pieceCaptured != null){
-                algebraicNotation.add(move.moveArray[0] + "x" + move.moveArray[1]);
-            } else {
-                algebraicNotation.add(move.moveArray[1]);
-            }
         } catch(Exception e){
             throw e;
         }

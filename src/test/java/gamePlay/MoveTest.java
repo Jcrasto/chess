@@ -9,7 +9,7 @@ public class MoveTest {
     Player player = new Player(true);
 
     @Test
-    public void badSyntaxmoves(){
+    public void checkSyntaxMoves(){
         ArrayList<String> testStrings = new ArrayList<String>(Arrays.asList("d4", "Kf3"));
         for(String moveString: testStrings){
             try {
