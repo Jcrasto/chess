@@ -38,7 +38,7 @@ public class Move {
     }
 
     private void checkMoveSyntax() throws Exception {
-        if (this.moveString.length() == 2){
+        if (Character.isLowerCase(this.moveString.charAt(0))){
             setPieceToMove(null);
         } else if (this.moveString.length() > 2 && Character.isUpperCase(this.moveString.charAt(0))
                 && this.moveString.charAt(0)!='O'){
