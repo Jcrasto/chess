@@ -3,8 +3,8 @@ package gamePlay;
 import java.io.File;
 import java.util.Scanner;
 
-public class PgnReader {
-    public PgnReader(String pgnFilePath) throws Exception{
+public class PgnFileReader {
+    public PgnFileReader(String pgnFilePath) throws Exception{
         File file = new File(pgnFilePath);
         Scanner sc = new Scanner(file);
         String line;
@@ -15,9 +15,13 @@ public class PgnReader {
                 continue;
             }
             else if (line.charAt(0) == '['){
+                if (gameString != "") {
+                    PgnStringReader gameReader = new PgnStringReader(gameString);
+                    gameString = "";
+                }
                 continue;
             } else {
-                System.out.println(line);
+                gameString += line;
             }
         }
     }
