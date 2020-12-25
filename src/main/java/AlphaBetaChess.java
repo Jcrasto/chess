@@ -117,17 +117,19 @@ public class AlphaBetaChess {
         for (int j = 0; j < 9; j++) {
             if (j != 4) {
                 try {
-                    if (Character.isLowerCase(chessBoard[r - 1 + j / 3][c - 1 + j % 3].charAt(0)) || " ".equals(chessBoard[r - 1 + j / 3][c - 1 + j % 3])) {
-                        oldPiece = chessBoard[r - 1 + j / 3][c - 1 + j % 3];
+                    int xcheck = r - 1 + j / 3;
+                    int ycheck = c - 1 + j % 3;
+                    if (Character.isLowerCase(chessBoard[xcheck][ycheck].charAt(0)) || " ".equals(chessBoard[xcheck][ycheck])) {
+                        oldPiece = chessBoard[xcheck][ycheck];
                         chessBoard[r][c] = " ";
-                        chessBoard[r - 1 + j / 3][c - 1 + j % 3] = "A";
+                        chessBoard[xcheck][ycheck] = "K";
                         int kingTemp = kingPositionWhite;
                         kingPositionWhite = i + (j / 3) * 8 + j % 3 - 9;
                         if (kingSafe()) {
-                            list = list + r + c + (r - 1 + j / 3) + (c - 1 + j % 3) + oldPiece;
+                            list = list + r + c + xcheck + ycheck + oldPiece;
                         }
-                        chessBoard[r][c] = "A";
-                        chessBoard[r - 1 + j / 3][c - 1 + j % 3] = oldPiece;
+                        chessBoard[r][c] = "K";
+                        chessBoard[xcheck][ycheck] = oldPiece;
                         kingPositionWhite = kingTemp;
                     }
                 } catch (Exception e) {
